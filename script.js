@@ -1,5 +1,4 @@
 const url = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json";
-
 fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -20,7 +19,7 @@ fetch(url)
                               d3.max(data, d => new Date(1970, 0, 1, 0, Math.floor(d.Seconds / 60), d.Seconds % 60))])
                      .range([padding, height + padding]);
 
-    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
+    const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y"));
     const yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S"));
 
     svg.append("g")
